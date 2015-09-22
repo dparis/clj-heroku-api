@@ -6,8 +6,9 @@
             [clj-http.conn-mgr :as http-conn-mgr]
             [clojure.java.io :as io]
             [cheshire.core :as json]
-            [com.palletops.log-config.timbre :as log-config]
-            [clj-http.fake :as http-fake]))
+            [clj-http.fake :as http-fake]
+            [taoensso.timbre :as log]))
+
 
 (testable-privates clj-heroku-api.core build-resource-commands)
 
@@ -31,7 +32,7 @@
 
 (defmacro test-wrapper
   [test]
-  `(log-config/suppress-logging
+  `(log/with-merged-config {:appenders {:println {:enabled? false}}}
     (s/with-fn-validation
       (http-fake/with-fake-routes
         {"https://api.heroku.com/schema"                (fn [request#] {:status  200

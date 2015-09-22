@@ -4,24 +4,21 @@
   :license {:name "Apache License 2.0"
             :url  "http://www.apache.org/licenses/LICENSE-2.0.html"}
 
-  :dependencies [[org.clojure/clojure "1.6.0"]
+  :dependencies [[org.clojure/clojure "1.7.0"]
 
-                 ;; Exclude org.clojure/clojure due to version range includes
-                 ;; in camel-snake-kebab deps
-                 [camel-snake-kebab "0.2.5" :exclusions [org.clojure/clojure]]
+                 [camel-snake-kebab "0.3.2"]
 
                  ;; Override version 2.3.1 pulled in by Cheshire
-                 [com.fasterxml.jackson.core/jackson-core "2.3.2"]
+                 ;[com.fasterxml.jackson.core/jackson-core "2.3.2"]
 
-                 [cheshire "5.3.1"]
-                 [clj-http "1.0.1"]
-                 [prismatic/schema "0.3.3"]
-                 [com.taoensso/timbre "3.3.1"]]
+                 [cheshire "5.5.0"]
+                 [clj-http "2.0.0"]
+                 [prismatic/schema "1.0.1"]
+                 [com.taoensso/timbre "4.1.1"]]
 
   :profiles {:dev {:resource-paths ["test-resources"]
-                   :dependencies   [[midje "1.6.3"]
-                                    [clj-http-fake "0.7.8"]
-                                    [com.palletops/log-config "0.1.4"]]
+                   :dependencies   [[midje "1.7.0"]
+                                    [clj-http-fake "1.0.1"]]
                    :plugins        [[lein-midje "3.1.3"]
                                     [codox "0.8.10"]]}}
 

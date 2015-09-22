@@ -8,9 +8,6 @@
             [schema.core :as s]
             [taoensso.timbre :as log]))
 
-;; Disable spit-to-filesystem log appender
-(log/set-config! [:appenders :spit :enabled?] false)
-
 
 ;; ## Vars
 
