@@ -1,4 +1,4 @@
-(defproject clj-heroku-api "0.1.1"
+(defproject clj-heroku-api "0.1.2"
   :description "An always-up-to-date Heroku API client for Clojure"
   :url "http://github.com/dparis/clj-heroku-api"
   :license {:name "Apache License 2.0"
