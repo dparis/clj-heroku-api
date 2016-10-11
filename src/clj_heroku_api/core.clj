@@ -108,20 +108,21 @@
 (defn- process-link-data
   "Extracts resource command data from a link-data map."
   [api-schema link-data]
-  (let [method          (http-method-keyword (get link-data "method"))
-        description     (get link-data "description")
-        href            (get link-data "href")
-        schema          (get link-data "schema")
-        command         (csk/->kebab-case (get link-data "title"))
-        path-parameters (href-parameters api-schema href)
-        path-template   (href-path-template href)
-        property-data   (get-link-properties-from-schema api-schema schema)
-        command-data    (filter-nil-values {:description     description
-                                            :method          method
-                                            :path-template   path-template
-                                            :path-parameters path-parameters
-                                            :properties      property-data})]
-    {command command-data}))
+  (when-let [title (get link-data "title")]
+    (let [method          (http-method-keyword (get link-data "method"))
+          description     (get link-data "description")
+          href            (get link-data "href")
+          schema          (get link-data "schema")
+          command         (csk/->kebab-case title)
+          path-parameters (href-parameters api-schema href)
+          path-template   (href-path-template href)
+          property-data   (get-link-properties-from-schema api-schema schema)
+          command-data    (filter-nil-values {:description     description
+                                              :method          method
+                                              :path-template   path-template
+                                              :path-parameters path-parameters
+                                              :properties      property-data})]
+      {command command-data})))
 
 (defn- process-resource
   "Extracts resource data from the API schema based on a resource name."

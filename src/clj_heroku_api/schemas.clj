@@ -10,11 +10,12 @@
   {(s/required-key "definitions")
    {s/Str {(s/required-key "stability")   (s/enum "prototype"
                                                   "development"
-                                                  "production")
-           (s/required-key "links")       [{s/Str s/Any}]
+                                                  "production"
+                                                  "deprecation")
            (s/required-key "title")       s/Str
            (s/required-key "description") s/Str
            (s/optional-key "definitions") {s/Str s/Any}
+           (s/optional-key "links")       [{s/Str s/Any}]
            s/Str                          s/Any}}
 
    s/Str s/Any})
